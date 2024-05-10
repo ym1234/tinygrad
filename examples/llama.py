@@ -467,10 +467,7 @@ After you are done speaking, output [EOS]. You are not Chad.
     if chatbot:
       user_prompt = user_delim + input(user_delim) + "\n"
       outputted += user_prompt
-
-    new_toks = [llama.tokenizer.bos_id()] + llama.tokenizer.encode(outputted)
-    assert toks == new_toks[:len(toks)]
-    toks = new_toks
+      toks.extend(llama.tokenizer.encode(user_prompt))
     assert outputted == llama.tokenizer.decode(toks)
 
     for i in range(args.count):
