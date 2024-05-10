@@ -468,6 +468,8 @@ After you are done speaking, output [EOS]. You are not Chad.
       user_prompt = user_delim + input(user_delim) + "\n"
       outputted += user_prompt
       toks.extend(llama.tokenizer.encode(user_prompt))
+      print(outputted)
+      print(llama.tokenizer.decode(toks))
     assert outputted == llama.tokenizer.decode(toks)
 
     for i in range(args.count):
